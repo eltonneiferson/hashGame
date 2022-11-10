@@ -1,6 +1,6 @@
 const divOne = document.querySelector('.one')
 const divTwo = document.querySelector('.two')
-const divTree = document.querySelector('.tree')
+const divThree = document.querySelector('.three')
 const divFour = document.querySelector('.four')
 const divFive = document.querySelector('.five')
 const divSix = document.querySelector('.six')
@@ -17,7 +17,7 @@ const options = [
 const localForInsert = [
     divOne,
     divTwo,
-    divTree,
+    divThree,
     divFour,
     divFive,
     divSix,
@@ -26,33 +26,35 @@ const localForInsert = [
     divNine,
 ]
 
-function writeX(imgX){
-    imgX.innerHTML = options[0]
+function randomLocal(){
+    if(localForInsert.length == 0){
+        return alert('Fim de Jogo!')
+    }
+    const locals = localForInsert.length
+    const randomLocal = Math.floor(Math.random() * locals)
+    let chosenLocation = localForInsert[randomLocal]
+    chosenLocation.innerHTML = options[1]
+    localForInsert.splice(localForInsert.indexOf(chosenLocation), 1)
 }
 
-console.log(localForInsert)
+if(localForInsert.length == 0){
+        
+}
 
-function randomLocal(){
-    const locals = localForInsert.length
-    const randomLocals = Math.floor(Math.random() * locals)
-    let selectionLocation = localForInsert[randomLocals]
-    selectionLocation.innerHTML = options[1]
-    localForInsert.splice(localForInsert.indexOf(selectionLocation), 1)
-
-    if(localForInsert == []){
-        return
+function click(clickedLocation) {
+    if(localForInsert.includes(clickedLocation) == false){
+        return alert('Local já selecionado')
+    } else {
+        clickedLocation.innerHTML = options[0]
+        localForInsert.splice(localForInsert.indexOf(clickedLocation), 1)
+        randomLocal()
     }
-
-    console.log(locals)
-    console.log(randomLocals)
-    console.log(selectionLocation)
-    console.log(localForInsert)
 }
 
 function reset(){
     divOne.innerHTML = ''
     divTwo.innerHTML = ''
-    divTree.innerHTML = ''
+    divThree.innerHTML = ''
     divFour.innerHTML = ''
     divFive.innerHTML = ''
     divSix.innerHTML = ''
@@ -62,57 +64,40 @@ function reset(){
 }
 
 divOne.addEventListener('click', () => {
-    writeX(divOne)
-    localForInsert.splice(localForInsert.indexOf(divOne), 1)
-    randomLocal()
+    click(divOne)
+    console.log(localForInsert)
 })
 
 divTwo.addEventListener('click', () => {
-    writeX(divTwo)
-    localForInsert.splice(localForInsert.indexOf(divTwo), 1)
-    randomLocal()
+    click(divTwo)
 })
 
-divTree.addEventListener('click', () => {
-    writeX(divTree)
-    localForInsert.splice(localForInsert.indexOf(divTree), 1)
-    randomLocal()
+divThree.addEventListener('click', () => {
+    click(divThree)
 })
 
 divFour.addEventListener('click', () => {
-    writeX(divFour)
-    localForInsert.splice(localForInsert.indexOf(divFour), 1)
-    randomLocal()
+    click(divFour)
 })
 
 divFive.addEventListener('click', () => {
-    writeX(divFive)
-    localForInsert.splice(localForInsert.indexOf(divFive), 1)
-    randomLocal()
+    click(divFive)
 })
 
 divSix.addEventListener('click', () => {
-    writeX(divSix)
-    localForInsert.splice(localForInsert.indexOf(divSix), 1)
-    randomLocal()
+    click(divSix)
 })
 
 divSeven.addEventListener('click', () => {
-    writeX(divSeven)
-    localForInsert.splice(localForInsert.indexOf(divSeven), 1)
-    randomLocal()
+    click(divSeven)
 })
 
 divEight.addEventListener('click', () => {
-    writeX(divEight)
-    localForInsert.splice(localForInsert.indexOf(divEight), 1)
-    randomLocal()
+    click(divEight)
 })
 
 divNine.addEventListener('click', () => {
-    writeX(divNine)
-    localForInsert.splice(localForInsert.indexOf(divNine), 1)
-    randomLocal()
+    click(divNine)
 })
 
 resetGame.addEventListener('click', reset)
