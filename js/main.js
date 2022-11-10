@@ -15,30 +15,17 @@ const options = [
 ]
 
 const localForInsert = [
-    divOne,
-    divTwo,
-    divThree,
-    divFour,
-    divFive,
-    divSix,
-    divSeven,
-    divEight,
-    divNine,
+    divOne, divTwo, divThree,
+    divFour, divFive, divSix,
+    divSeven, divEight, divNine
 ]
 
 function randomLocal(){
-    if(localForInsert.length == 0){
-        return alert('Fim de Jogo!')
-    }
     const locals = localForInsert.length
     const randomLocal = Math.floor(Math.random() * locals)
     let chosenLocation = localForInsert[randomLocal]
-    chosenLocation.innerHTML = options[1]
     localForInsert.splice(localForInsert.indexOf(chosenLocation), 1)
-}
-
-if(localForInsert.length == 0){
-        
+    chosenLocation.innerHTML = options[1]
 }
 
 function click(clickedLocation) {
@@ -47,6 +34,9 @@ function click(clickedLocation) {
     } else {
         clickedLocation.innerHTML = options[0]
         localForInsert.splice(localForInsert.indexOf(clickedLocation), 1)
+        if(localForInsert.length == 0){
+            return
+        }
         randomLocal()
     }
 }
@@ -61,11 +51,12 @@ function reset(){
     divSeven.innerHTML = ''
     divEight.innerHTML = ''
     divNine.innerHTML = ''
+    localForInsert.length = 0
+    localForInsert.push(divOne, divTwo, divThree, divFour, divFive, divSix, divSeven, divEight, divNine)
 }
 
 divOne.addEventListener('click', () => {
     click(divOne)
-    console.log(localForInsert)
 })
 
 divTwo.addEventListener('click', () => {
