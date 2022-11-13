@@ -26,7 +26,6 @@ function randomLocation(){
     let chosenPlace = placeToClick[randomLocal]
     placeToClick.splice(placeToClick.indexOf(chosenPlace), 1)
     chosenPlace.innerHTML = options[1]
-    chosenPlace.classList.add('o')
 }
 
 function click(clickedLocation) {
@@ -34,18 +33,11 @@ function click(clickedLocation) {
         return alert('Local já selecionado')
     } else {
         clickedLocation.innerHTML = options[0]
-        clickedLocation.classList.add('x')
         placeToClick.splice(placeToClick.indexOf(clickedLocation), 1)
         if(placeToClick.length == 0){
             return
         }
         randomLocation()
-    }
-}
-
-function winGame(){
-    if((divOne, divTwo, divThree).classList.contains('x') || (divOne, divTwo, divThree).classList.contains('o')){
-        alert('Parabéns você venceu!')
     }
 }
 
@@ -60,6 +52,8 @@ function reset(){
 placeToClick.forEach((placeClicked) => {
     placeClicked.addEventListener('click', () => {
         click(placeClicked)
+        const x = divOne.querySelector('img')
+        console.log(x)
     })
 })
 
