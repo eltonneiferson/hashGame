@@ -9,7 +9,7 @@ Na aplicação é possível competir contra um bot e durante o jogo acontece var
 
 ![Imagem do projeto](./see-project/img02.png)
 
-<p>Verifica se a a partida não terminou em empate:</p>
+<p>Verifica se a partida não terminou em empate:</p>
 
 ![Imagem do projeto](./see-project/img03.png)
 
