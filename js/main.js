@@ -1,6 +1,6 @@
 const places = document.querySelectorAll('#game div')
 const message = document.querySelector('.message');
-const resetGame = document.querySelector('.reset-game')
+const resetGame = document.querySelector('.button-reset')
 const combinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -24,10 +24,9 @@ function randomLocation(){
         return randomLocation()
     }
 
-    chosenPlace.innerHTML = `<img class="o" src="imgs/circle.png" alt="O" width="90">`
+    chosenPlace.innerHTML = `<span>O</span>`
     message.textContent = `Sua vez de jogar!`
-    chosenPlace.classList.add('o')
-    chosenPlace.classList.add('selected')
+    chosenPlace.setAttribute('class', 'o selected')
     
     let winnerO = combinations.some((comb) => comb.every((index) => places[index].matches('.o')))
     if(winnerO){
@@ -39,24 +38,20 @@ function click(clickedLocation) {
     if(clickedLocation.matches('.x') || clickedLocation.matches('.o')){
         return alert('Local já selecionado!')
     }
-    clickedLocation.innerHTML = `<img class="x" src="imgs/x.png" alt="X" width="90">`
-    clickedLocation.classList.add('x')
-    clickedLocation.classList.add('selected')
 
+    clickedLocation.innerHTML = `<span>X</span>`
+    clickedLocation.setAttribute('class', 'x selected')
+    
     let winnerX = combinations.some((comb) => comb.every((index) => places[index].matches('.x')))
     winnerX ? message.textContent = `Parabéns você venceu!` : randomLocation()
 }
 
-function restoreDefault(item) {
-    item.innerHTML = ''
-    item.classList.remove('x')
-    item.classList.remove('o')
-    item.classList.remove('selected')
-}
-
 function reset(){
-    places.forEach((item)=> restoreDefault(item))
     message.textContent = `Clique em um quadrado e vamos jogar!`
+    places.forEach((item) => {
+        item.innerHTML = ''
+        item.removeAttribute('class', 'x o selected')
+    })
 }
 
 places.forEach((placeClicked) => {

@@ -40,11 +40,17 @@ body {
 	background-color: white;
 	border-radius: .5rem;
 	cursor: pointer;
-	
-	display: grid;
-	place-content: center;
 }
 
+span {
+	height: 100%;
+	display: grid;
+	place-content: center;
+	font-family: Arial, sans-serif;
+	font-size: 7.5rem;
+	line-height: 0;
+	/* background-color: red; */
+}
 
 button {
 	width: 100%;
